@@ -1,199 +1,551 @@
 <!DOCTYPE html>
-<html class="h-full" lang="en">
+<html lang="en" class="h-full">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
-    <link id="google-fonts-link" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/8e98006f77.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <title>Scholarships | Pata Scholarship - Kenyan & Global Opportunities 2026</title>
-    <meta name="description" content="Explore current 2026 scholarships for Kenyan students: HELB, Equity Wings to Fly, Chinese Government, DAAD, Mastercard Foundation, and more. Secure application platform coming soon!">
-    <meta name="language" content="en">
-    <meta property="og:title" content="Scholarships 2026 | Pata Scholarship">
-    <meta property="og:description" content="Discover local Kenyan, bilateral, and prestigious global scholarships for JSS, Secondary, University, TVET, Master's & PhD.">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Available Scholarships | Pata Scholarship</title>
+  <meta name="description" content="Browse and apply for over 50 scholarships available for Kenyan students. Find scholarships for JSS, Secondary, University, and TVET programs."/>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Raleway', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      
+      --dark-text-color: #1e293b;
+      --gray-text-color: #64748b;
+      --accent4-color: #10b981;
+    }
+
+    .scholarship-card {
+      transition: all 0.3s ease;
+    }
+
+    .scholarship-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .filter-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .badge-jss { background-color: #dbeafe; color: #1e40af; }
+    .badge-secondary { background-color: #fce7f3; color: #be185d; }
+    .badge-university { background-color: #f3e8ff; color: #6b21a8; }
+    .badge-tvet { background-color: #fed7aa; color: #92400e; }
+    .badge-full { background-color: #d1fae5; color: #065f46; }
+    .badge-partial { background-color: #fef3c7; color: #92400e; }
+  </style>
 </head>
-<body class="h-full bg-white">
+<body class="h-full bg-gray-50 font-body antialiased">
 
-<div class="frame-root">
-  <div class="frame-content">
-    <div class="[font-family:var(--font-family-body)]">
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-24">
+        <a href="index.html" class="flex-shrink-0">
+          <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/773d76db-4b7e-4367-8326-ba10db661500/publicContain" 
+               alt="Pata Scholarship Logo" class="h-24 py-2">
+        </a>
 
-      <!-- Header (identical to homepage) -->
-      <header id="global-header" class="code-section bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center h-28">
-            <a href="index.html" class="flex-shrink-0">
-              <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/773d76db-4b7e-4367-8326-ba10db661500/publicContain" alt="Pata Scholarship Logo" class="h-28 py-2" data-logo="">
-            </a>
-            <nav class="hidden lg:flex items-center space-x-8">
-              <a href="scholarships.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-200">Search Scholarships</a>
-              <a href="about.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-200">About Us</a>
-              <a href="faq.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-200">FAQ</a>
-              <a href="contact.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-200">Contact Us</a>
-              <a href="scholarships.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] font-semibold hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 shadow-md hover:shadow-lg">Find My Scholarship</a>
-            </nav>
-            <button data-landingsite-mobile-menu-toggle="" class="lg:hidden p-2 rounded-md text-[var(--dark-text-color)] hover:bg-[var(--light-background-color)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
-              <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
-            </button>
-          </div>
-          <nav data-landingsite-mobile-menu="" class="hidden lg:hidden pb-4">
-            <div class="flex flex-col space-y-3">
-              <a href="scholarships.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium py-2 px-4 rounded hover:bg-[var(--light-background-color)] transition-colors duration-200">Search Scholarships</a>
-              <a href="about.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium py-2 px-4 rounded hover:bg-[var(--light-background-color)] transition-colors duration-200">About Us</a>
-              <a href="faq.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium py-2 px-4 rounded hover:bg-[var(--light-background-color)] transition-colors duration-200">FAQ</a>
-              <a href="contact.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium py-2 px-4 rounded hover:bg-[var(--light-background-color)] transition-colors duration-200">Contact Us</a>
-              <a href="scholarships.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] font-semibold hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 text-center shadow-md">Find My Scholarship</a>
-            </div>
-          </nav>
-        </div>
-      </header>
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="scholarship.html" class="text-[var(--primary-color)] font-medium border-b-2 border-[var(--primary-color)]">Scholarships</a>
+          <a href="about.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">About Us</a>
+          <a href="faq.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">FAQ</a>
+          <a href="contact.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">Contact</a>
+          <a href="apply.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] font-semibold hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 shadow-md hover:shadow-lg">Apply Now</a>
+        </nav>
 
-      <!-- Hero Section -->
-      <div class="code-section relative bg-gradient-to-br from-[var(--light-background-color)] to-white overflow-hidden py-16 sm:py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div class="text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--dark-text-color)] mb-6 font-[var(--font-family-heading)] leading-tight">
-              2026 Scholarships for <span class="text-[var(--primary-color)]">Kenyan Students</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-[var(--gray-text-color)] max-w-3xl mx-auto mb-8">
-              Discover active local, bilateral & global opportunities. Coming soon: Secure online application forms directly on Pata Scholarship!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-              <a href="register.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-10 py-5 rounded-[var(--button-rounded-radius)] font-bold text-xl hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 shadow-xl inline-flex items-center gap-3">
-                <i class="fas fa-user-plus" aria-hidden="true"></i>
-                Create Free Account
-              </a>
-              <a href="#scholarships" class="border-2 border-[var(--primary-color)] text-[var(--primary-color)] px-10 py-5 rounded-[var(--button-rounded-radius)] font-bold text-xl hover:bg-[var(--primary-color)] hover:text-white transition-all duration-200 shadow-xl inline-flex items-center gap-3">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                Browse Now
-              </a>
-            </div>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-700">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-4 space-y-3">
+        <a href="scholarship.html" class="block text-[var(--primary-color)] font-medium">Scholarships</a>
+        <a href="about.html" class="block text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">About Us</a>
+        <a href="faq.html" class="block text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">FAQ</a>
+        <a href="contact.html" class="block text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">Contact</a>
+        <a href="scholarships.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] font-semibold hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 text-center shadow-md">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-green-600 to-green-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 font-heading">
+          Available Scholarships
+        </h1>
+        <p class="text-xl sm:text-2xl text-indigo-100 max-w-3xl mx-auto mb-8">
+          Explore over 50 scholarship opportunities for Kenyan students
+        </p>
+        
+        <!-- Search Bar -->
+        <div class="max-w-2xl mx-auto">
+          <div class="relative">
+            <input type="text" id="searchInput" 
+                   class="w-full px-6 py-4 pr-12 rounded-xl text-gray-900 text-lg focus:ring-4 focus:ring-indigo-300 focus:outline-none"
+                   placeholder="Search scholarships by name, institution, or level...">
+            <i class="fas fa-search absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl"></i>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Main Scholarships Content -->
-      <div id="scholarships" class="code-section bg-white py-16 sm:py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Filters Section -->
+  <section class="bg-white border-b border-gray-200 sticky top-24 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-wrap gap-3 items-center justify-center">
+        <button class="filter-btn active px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="all">
+          All Scholarships (50)
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="jss">
+          JSS (12)
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="secondary">
+          Secondary (15)
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="university">
+          University (18)
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="tvet">
+          TVET (5)
+        </button>
+      </div>
+    </div>
+  </section>
 
-          <!-- Alert Banner -->
-          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-12 rounded-r-xl">
-            <div class="flex items-center">
-              <i class="fas fa-info-circle text-3xl text-yellow-600 mr-4"></i>
-              <div>
-                <p class="text-lg font-semibold text-yellow-800">Exciting Update!</p>
-                <p class="text-gray-700">We're building secure, multi-step online application forms for popular scholarships. Register now to get early access & personalized alerts!</p>
-              </div>
-            </div>
-          </div>
+  <!-- Scholarships Listing -->
+  <main class="min-h-screen py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex justify-between items-center mb-8">
+        <p class="text-gray-600">
+          <span id="resultCount">50</span> scholarships available
+        </p>
+        <select id="sortSelect" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+          <option value="recent">Most Recent</option>
+          <option value="deadline">Deadline (Soonest)</option>
+          <option value="amount">Amount (Highest)</option>
+          <option value="name">Name (A-Z)</option>
+        </select>
+      </div>
 
-          <!-- Local Kenyan Scholarships -->
-          <section class="mb-20">
-            <h2 class="text-4xl font-bold text-center text-[var(--dark-text-color)] mb-12 font-[var(--font-family-heading)]">
-              Local Kenyan Scholarships (Government & Institutional)
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div class="bg-gradient-to-br from-[var(--light-background-color)] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="w-16 h-16 bg-[var(--primary-color)] bg-opacity-10 rounded-full flex items-center justify-center mb-6">
-                  <i class="fas fa-university text-3xl text-[var(--primary-color)]"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-[var(--dark-text-color)] mb-4">HELB Loans & Scholarships 2025/2026</h3>
-                <p class="text-[var(--gray-text-color)] mb-6">Student-Centred Funding Model – scholarships, loans & household contributions for university & TVET. First-time applications open!</p>
-                <a href="https://www.helb.co.ke/" target="_blank" class="inline-flex items-center text-[var(--primary-color)] font-semibold hover:underline">
-                  Apply on HELB Portal <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-              </div>
+      <div id="scholarshipsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Scholarships will be populated by JavaScript -->
+      </div>
 
-              <div class="bg-gradient-to-br from-[var(--light-background-color)] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                  <i class="fas fa-graduation-cap text-3xl text-green-600"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-[var(--dark-text-color)] mb-4">Equity Wings to Fly</h3>
-                <p class="text-[var(--gray-text-color)] mb-6">Secondary school scholarships for bright, needy students – full support including tuition & mentorship.</p>
-                <a href="https://equitygroupfoundation.com/wings-to-fly/" target="_blank" class="inline-flex items-center text-[var(--primary-color)] font-semibold hover:underline">
-                  Learn More & Apply <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-              </div>
+      <!-- No Results -->
+      <div id="noResults" class="hidden text-center py-16">
+        <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+        <h3 class="text-2xl font-bold text-gray-700 mb-2">No scholarships found</h3>
+        <p class="text-gray-500">Try adjusting your search or filters</p>
+      </div>
+    </div>
+  </main>
 
-              <div class="bg-gradient-to-br from-[var(--light-background-color)] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <i class="fas fa-globe-africa text-3xl text-blue-600"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-[var(--dark-text-color)] mb-4">Mastercard Foundation at USIU-Africa</h3>
-                <p class="text-[var(--gray-text-color)] mb-6">Fully funded undergraduate degrees for talented Kenyan/African students. Applications ongoing via university.</p>
-                <a href="https://www.usiu.ac.ke/mastercard-foundation-scholars-program/" target="_blank" class="inline-flex items-center text-[var(--primary-color)] font-semibold hover:underline">
-                  Check Eligibility <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-              </div>
-
-              <!-- You can add more cards: Universities Fund, KUCCPS, County Bursaries, etc. -->
-            </div>
-          </section>
-
-          <!-- Bilateral & International -->
-          <section class="mb-20">
-            <h2 class="text-4xl font-bold text-center text-[var(--dark-text-color)] mb-12 font-[var(--font-family-heading)]">
-              Bilateral & Government-Sponsored International Scholarships
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div class="bg-gradient-to-br from-[var(--light-background-color)] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                  <i class="fas fa-flag text-3xl text-red-600"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-[var(--dark-text-color)] mb-4">Chinese Government Scholarships 2025/2026</h3>
-                <p class="text-[var(--gray-text-color)] mb-6">17 fully funded slots for Kenyan students (Undergraduate, Master's, PhD) via Ministry of Education.</p>
-                <a href="https://www.education.go.ke/scholarships-0" target="_blank" class="inline-flex items-center text-[var(--primary-color)] font-semibold hover:underline">
-                  Apply via MoE Kenya <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-              </div>
-
-              <div class="bg-gradient-to-br from-[var(--light-background-color)] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 opacity-75">
-                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                  <i class="fas fa-university text-3xl text-purple-600"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-[var(--dark-text-color)] mb-4">Chevening Scholarships (UK) 2026-2027</h3>
-                <p class="text-[var(--gray-text-color)] mb-6">Fully funded Master's – applications now closed. Next cycle expected in 2027.</p>
-                <a href="https://www.chevening.org/scholarship/kenya/" target="_blank" class="inline-flex items-center text-gray-500 font-semibold">
-                  View Details (Closed) <i class="fas fa-info-circle ml-2"></i>
-                </a>
-              </div>
-
-              <div class="bg-gradient-to-br from-[var(--light-background-color)] to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <i class="fas fa-book-open text-3xl text-blue-600"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-[var(--dark-text-color)] mb-4">DAAD Scholarships (Germany)</h3>
-                <p class="text-[var(--gray-text-color)] mb-6">Master's, PhD & short courses – various deadlines through 2026 for 2026 intakes.</p>
-                <a href="https://www.daad-kenya.org/" target="_blank" class="inline-flex items-center text-[var(--primary-color)] font-semibold hover:underline">
-                  Explore DAAD Kenya <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <!-- CTA Section -->
-          <div class="text-center py-16 bg-gradient-to-br from-[var(--primary-color)] to-[var(--accent4-color)] rounded-3xl text-white mb-16">
-            <h2 class="text-4xl font-bold mb-6">Ready to Apply?</h2>
-            <p class="text-xl mb-10 max-w-2xl mx-auto">Sign up for free to get matched with scholarships, receive deadline alerts, and access our upcoming secure application forms.</p>
-            <a href="register.html" class="bg-white text-[var(--primary-color)] px-12 py-6 rounded-[var(--button-rounded-radius)] font-bold text-xl hover:bg-opacity-90 transition-all duration-200 shadow-2xl inline-flex items-center gap-3">
-              <i class="fas fa-rocket"></i>
-              Get Started Now
-            </a>
-          </div>
-
+  <!-- Footer -->
+  <footer id="global-footer" class="code-section bg-[var(--dark-background-color)] text-[var(--light-text-color)] pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Main Footer Content -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- Brand Column -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="index.html" class="inline-block mb-4">
+          <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/773d76db-4b7e-4367-8326-ba10db661500/publicContain" alt="Pata Scholarship Logo" class="h-28 py-2" data-logo="">
+        </a>
+        <p class="text-[var(--gray-text-color)] text-sm mb-6 leading-relaxed">
+          Empowering Kenyan students to achieve their educational dreams through
+          secure, accessible scholarship opportunities.
+        </p>
+        <!-- Social Media -->
+        <div class="flex gap-4">
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-facebook-f text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-twitter text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-instagram text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-linkedin-in text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
 
-      <!-- Footer (copy your original footer here) -->
-      <!-- ... Paste the full footer code from index.html ... -->
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
+          Quick Links
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="index.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Home</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Search Scholarships</a>
+          </li>
+          <li>
+            <a href="about.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">About Us</a>
+          </li>
+          <li>
+            <a href="faq.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">FAQ</a>
+          </li>
+          <li>
+            <a href="contact.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Contact Us</a>
+          </li>
+        </ul>
+      </div>
 
+      <!-- Scholarships -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
+          Scholarships
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="scholarship.html class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Junior Secondary</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Senior Secondary</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">University</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">TVET &amp; Colleges</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Scholarship Details</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Account & Legal -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
+          Account &amp; Legal
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="login.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Login</a>
+          </li>
+          <li>
+            <a href="register.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Register</a>
+          </li>
+          <li>
+            <a href="account.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">My Account</a>
+          </li>
+          <li>
+            <a href="privacy-policy.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="terms-of-service.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Terms of Service</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-[var(--gray-text-color)] border-opacity-20 pt-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-[var(--gray-text-color)] text-sm text-center sm:text-left">
+          © 2026 Pata Scholarship. All rights reserved. | Securing Kenya's
+          Educational Future
+        </p>
+        <div class="flex items-center gap-4 text-sm text-[var(--gray-text-color)]">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-shield-check text-[var(--primary-color)]" aria-hidden="true"></i>
+            <span>SSL Secured</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-lock text-[var(--primary-color)]" aria-hidden="true"></i>
+            <span>Data Protected</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</footer>
 
-<script src="https://app.landingsite.ai/embed/main.umd.js"></script>
+  <script>
+    // Scholarship data
+    const scholarships = [
+      // JSS Scholarships (12)
+      { id: 1, name: "Kenya Education Fund - JSS", institution: "Kenya Education Fund", level: "jss", type: "full", amount: 80000, deadline: "2026-03-15", description: "Full scholarship covering tuition, books, and uniforms for Grade 7-9 students from low-income families." },
+      { id: 2, name: "Equity Bank Wings to Fly - JSS", institution: "Equity Bank Foundation", level: "jss", type: "full", amount: 75000, deadline: "2026-02-28", description: "Complete educational support for bright but needy JSS students across Kenya." },
+      { id: 3, name: "Safaricom Foundation JSS Scholarship", institution: "Safaricom Foundation", level: "jss", type: "partial", amount: 40000, deadline: "2026-04-10", description: "Partial scholarship for academically excellent students in Grades 7-9." },
+      { id: 4, name: "KCB Foundation JSS Bursary", institution: "KCB Foundation", level: "jss", type: "partial", amount: 35000, deadline: "2026-03-20", description: "Financial aid for JSS students demonstrating academic potential." },
+      { id: 5, name: "Co-operative Bank Foundation JSS", institution: "Co-operative Bank", level: "jss", type: "full", amount: 70000, deadline: "2026-02-15", description: "Full scholarship for orphans and vulnerable children in JSS." },
+      { id: 6, name: "Msingi East Africa JSS Fund", institution: "Msingi East Africa", level: "jss", type: "partial", amount: 30000, deadline: "2026-04-30", description: "Support for JSS students in rural areas." },
+      { id: 7, name: "Elimu Scholarship - JSS", institution: "Elimu Foundation", level: "jss", type: "full", amount: 65000, deadline: "2026-03-05", description: "Comprehensive support for top JSS performers from marginalized communities." },
+      { id: 8, name: "Jamii Bora JSS Grant", institution: "Jamii Bora Foundation", level: "jss", type: "partial", amount: 25000, deadline: "2026-05-15", description: "Financial assistance for JSS students in informal settlements." },
+      { id: 9, name: "Nairobi County JSS Scholarship", institution: "Nairobi County Government", level: "jss", type: "partial", amount: 30000, deadline: "2026-02-20", description: "County-sponsored scholarship for Nairobi residents in JSS." },
+      { id: 10, name: "Wings of Hope JSS Program", institution: "Wings of Hope Kenya", level: "jss", type: "full", amount: 60000, deadline: "2026-03-25", description: "Full educational sponsorship for exceptional JSS students." },
+      { id: 11, name: "Uwezo Fund JSS Support", institution: "Uwezo Fund", level: "jss", type: "partial", amount: 20000, deadline: "2026-04-15", description: "Government bursary for economically disadvantaged JSS learners." },
+      { id: 12, name: "Bridge International JSS Scholarship", institution: "Bridge International Academies", level: "jss", type: "partial", amount: 35000, deadline: "2026-03-30", description: "Merit-based scholarship for JSS students in Bridge schools." },
+
+      // Secondary Scholarships (15)
+      { id: 13, name: "Equity Wings to Fly - Secondary", institution: "Equity Bank Foundation", level: "secondary", type: "full", amount: 120000, deadline: "2026-02-10", description: "Kenya's largest secondary school scholarship covering all education costs." },
+      { id: 14, name: "KCB Foundation 2jiajiri Scholarship", institution: "KCB Foundation", level: "secondary", type: "full", amount: 110000, deadline: "2026-03-01", description: "Full scholarship for bright students from poor backgrounds." },
+      { id: 15, name: "Safaricom Foundation Secondary", institution: "Safaricom Foundation", level: "secondary", type: "partial", amount: 60000, deadline: "2026-04-05", description: "Partial scholarship for Form 1-4 students with financial need." },
+      { id: 16, name: "Mastercard Foundation Scholars", institution: "Mastercard Foundation", level: "secondary", type: "full", amount: 150000, deadline: "2026-01-31", description: "Comprehensive scholarship including mentorship and leadership training." },
+      { id: 17, name: "Brookside Dairy Scholarship", institution: "Brookside Dairy Ltd", level: "secondary", type: "partial", amount: 50000, deadline: "2026-03-15", description: "Support for secondary students in dairy farming communities." },
+      { id: 18, name: "Moi University High School Scholarship", institution: "Moi University", level: "secondary", type: "full", amount: 130000, deadline: "2026-02-25", description: "Full boarding scholarship at Moi High School for top performers." },
+      { id: 19, name: "Strathmore School Bursary", institution: "Strathmore School", level: "secondary", type: "partial", amount: 70000, deadline: "2026-03-10", description: "Financial aid for students admitted to Strathmore School." },
+      { id: 20, name: "KEPSA Secondary Scholarship", institution: "KEPSA", level: "secondary", type: "partial", amount: 55000, deadline: "2026-04-20", description: "Private sector scholarship for academically gifted students." },
+      { id: 21, name: "Aga Khan Secondary Grant", institution: "Aga Khan Foundation", level: "secondary", type: "full", amount: 140000, deadline: "2026-02-05", description: "Full scholarship for students in Aga Khan schools." },
+      { id: 22, name: "County Government Bursary", institution: "County Governments", level: "secondary", type: "partial", amount: 40000, deadline: "2026-05-01", description: "County-level bursary for needy secondary students." },
+      { id: 23, name: "Wings to Fly Alliance", institution: "Multiple Partners", level: "secondary", type: "full", amount: 125000, deadline: "2026-02-15", description: "Partnership scholarship covering full secondary education." },
+      { id: 24, name: "NCCK Education Fund", institution: "NCCK", level: "secondary", type: "partial", amount: 45000, deadline: "2026-03-20", description: "Church-based scholarship for Christian students." },
+      { id: 25, name: "Starehe Boys Centre Scholarship", institution: "Starehe Boys Centre", level: "secondary", type: "full", amount: 0, deadline: "2026-01-20", description: "Free education for boys from disadvantaged backgrounds." },
+      { id: 26, name: "Precious Blood Riruta Bursary", institution: "Precious Blood Schools", level: "secondary", type: "partial", amount: 60000, deadline: "2026-03-25", description: "Financial support for girls in secondary school." },
+      { id: 27, name: "Provincial Administration Scholarship", institution: "Ministry of Interior", level: "secondary", type: "partial", amount: 35000, deadline: "2026-04-10", description: "Government scholarship for children of security personnel." },
+
+      // University Scholarships (18)
+      { id: 28, name: "Mastercard Foundation Scholars Program", institution: "Multiple Universities", level: "university", type: "full", amount: 500000, deadline: "2026-02-28", description: "Full undergraduate scholarship including stipend and leadership development." },
+      { id: 29, name: "DAAD Scholarship Kenya", institution: "DAAD Germany", level: "university", type: "full", amount: 800000, deadline: "2026-03-31", description: "Full scholarship for postgraduate studies in Germany." },
+      { id: 30, name: "Commonwealth Scholarship", institution: "UK Government", level: "university", type: "full", amount: 1200000, deadline: "2026-01-15", description: "Full scholarship for Master's and PhD in UK universities." },
+      { id: 31, name: "HELB Scholarship", institution: "Higher Education Loans Board", level: "university", type: "partial", amount: 60000, deadline: "2026-06-30", description: "Government scholarship and loans for university students." },
+      { id: 32, name: "Equity Leaders Program", institution: "Equity Bank Foundation", level: "university", type: "full", amount: 400000, deadline: "2026-02-10", description: "Full university scholarship with leadership training." },
+      { id: 33, name: "KCB 2jiajiri Scholarship - University", institution: "KCB Foundation", level: "university", type: "full", amount: 350000, deadline: "2026-03-05", description: "Complete undergraduate scholarship for STEM students." },
+      { id: 34, name: "Safaricom ICT Scholarship", institution: "Safaricom Foundation", level: "university", type: "partial", amount: 200000, deadline: "2026-04-15", description: "Scholarship for ICT and Engineering students." },
+      { id: 35, name: "Co-op Bank Foundation University", institution: "Co-operative Bank", level: "university", type: "partial", amount: 150000, deadline: "2026-03-20", description: "Annual scholarship for undergraduate students." },
+      { id: 36, name: "Aga Khan University Scholarship", institution: "Aga Khan University", level: "university", type: "full", amount: 600000, deadline: "2026-02-20", description: "Full tuition scholarship for medical and nursing students." },
+      { id: 37, name: "Chevening Scholarship", institution: "UK Foreign Office", level: "university", type: "full", amount: 1500000, deadline: "2026-11-01", description: "Prestigious scholarship for Master's degree in UK." },
+      { id: 38, name: "Fulbright Program Kenya", institution: "US Embassy", level: "university", type: "full", amount: 2000000, deadline: "2026-05-31", description: "Full scholarship for graduate studies in USA." },
+      { id: 39, name: "Kenya Bankers Association Scholarship", institution: "KBA", level: "university", type: "partial", amount: 180000, deadline: "2026-04-01", description: "Merit scholarship for finance and economics students." },
+      { id: 40, name: "Moi University Scholarship", institution: "Moi University", level: "university", type: "partial", amount: 100000, deadline: "2026-03-15", description: "University scholarship for top performers." },
+      { id: 41, name: "Kenyatta University Merit Award", institution: "Kenyatta University", level: "university", type: "partial", amount: 120000, deadline: "2026-03-10", description: "Academic excellence scholarship for undergraduate students." },
+      { id: 42, name: "Strathmore University Scholarship", institution: "Strathmore University", level: "university", type: "full", amount: 450000, deadline: "2026-02-15", description: "Full scholarship for business and IT students." },
+      { id: 43, name: "USIU Africa Scholarship", institution: "USIU-Africa", level: "university", type: "partial", amount: 250000, deadline: "2026-04-30", description: "Merit-based scholarship for undergraduate programs." },
+      { id: 44, name: "Jomo Kenyatta University Grant", institution: "JKUAT", level: "university", type: "partial", amount: 90000, deadline: "2026-03-25", description: "Engineering and agriculture scholarship program." },
+      { id: 45, name: "Africa Women in STEM Scholarship", institution: "Various Organizations", level: "university", type: "full", amount: 500000, deadline: "2026-02-28", description: "Full scholarship for women pursuing STEM degrees." },
+
+      // TVET Scholarships (5)
+      { id: 46, name: "Kenya Youth Employment Program", institution: "Ministry of Education", level: "tvet", type: "full", amount: 150000, deadline: "2026-04-15", description: "Full scholarship for technical and vocational training." },
+      { id: 47, name: "KEPSA TVET Fund", institution: "KEPSA", level: "tvet", type: "partial", amount: 80000, deadline: "2026-05-01", description: "Industry-sponsored TVET scholarship program." },
+      { id: 48, name: "KCB Foundation Skills Development", institution: "KCB Foundation", level: "tvet", type: "partial", amount: 70000, deadline: "2026-03-30", description: "Support for students in technical colleges." },
+      { id: 49, name: "Safaricom TVET Scholarship", institution: "Safaricom Foundation", level: "tvet", type: "full", amount: 120000, deadline: "2026-04-20", description: "Full scholarship for ICT and technical courses." },
+      { id: 50, name: "German Development TVET Grant", institution: "GIZ Kenya", level: "tvet", type: "partial", amount: 100000, deadline: "2026-05-15", description: "Support for vocational training in priority sectors." }
+    ];
+
+    let filteredScholarships = [...scholarships];
+
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // Render scholarships
+    function renderScholarships(scholarshipsToRender) {
+      const grid = document.getElementById('scholarshipsGrid');
+      const noResults = document.getElementById('noResults');
+      
+      if (scholarshipsToRender.length === 0) {
+        grid.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        return;
+      }
+      
+      grid.classList.remove('hidden');
+      noResults.classList.add('hidden');
+      
+      grid.innerHTML = scholarshipsToRender.map(s => `
+        <div class="scholarship-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-200" data-level="${s.level}">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <span class="badge-${s.level} px-3 py-1 rounded-full text-xs font-semibold uppercase">
+                ${s.level}
+              </span>
+              <span class="badge-${s.type} px-3 py-1 rounded-full text-xs font-semibold uppercase">
+                ${s.type === 'full' ? 'Full Scholarship' : 'Partial'}
+              </span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-gray-900 mb-2 font-heading">
+              ${s.name}
+            </h3>
+            
+            <p class="text-sm text-gray-600 mb-3">
+              <i class="fas fa-university mr-2"></i>${s.institution}
+            </p>
+            
+            <p class="text-sm text-gray-700 mb-4 line-clamp-3">
+              ${s.description}
+            </p>
+            
+            <div class="border-t border-gray-200 pt-4 mb-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-gray-500 mb-1">Award Amount</p>
+                  <p class="font-bold text-green-600">
+                    ${s.amount === 0 ? 'Free' : 'KES ' + s.amount.toLocaleString()}
+                  </p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-500 mb-1">Deadline</p>
+                  <p class="font-semibold text-gray-900">${new Date(s.deadline).toLocaleDateString('en-GB')}</p>
+                </div>
+              </div>
+            </div>
+            
+            <a href="#apply" onclick="applyScholarship(${s.id})" 
+               class="block w-full text-center px-6 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition-colors">
+              Apply Now
+            </a>
+          </div>
+        </div>
+      `).join('');
+      
+      document.getElementById('resultCount').textContent = scholarshipsToRender.length;
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        if (filter === 'all') {
+          filteredScholarships = [...scholarships];
+        } else {
+          filteredScholarships = scholarships.filter(s => s.level === filter);
+        }
+        
+        renderScholarships(filteredScholarships);
+      });
+    });
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      const searchResults = filteredScholarships.filter(s => 
+        s.name.toLowerCase().includes(searchTerm) ||
+        s.institution.toLowerCase().includes(searchTerm) ||
+        s.description.toLowerCase().includes(searchTerm) ||
+        s.level.toLowerCase().includes(searchTerm)
+      );
+      
+      renderScholarships(searchResults);
+    });
+
+    // Sort functionality
+    document.getElementById('sortSelect').addEventListener('change', function(e) {
+      const sortBy = e.target.value;
+      let sorted = [...filteredScholarships];
+      
+      switch(sortBy) {
+        case 'deadline':
+          sorted.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+          break;
+        case 'amount':
+          sorted.sort((a, b) => b.amount - a.amount);
+          break;
+        case 'name':
+          sorted.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        default:
+          sorted = [...filteredScholarships];
+      }
+      
+      renderScholarships(sorted);
+    });
+
+    // Apply scholarship function
+    function applyScholarship(id) {
+      const scholarship = scholarships.find(s => s.id === id);
+      if (scholarship) {
+        // Store selected scholarship in session
+        const scholarshipData = {
+          id: scholarship.id,
+          name: scholarship.name,
+          institution: scholarship.institution,
+          level: scholarship.level,
+          type: scholarship.type,
+          amount: scholarship.amount
+        };
+        
+        // In a real application, you would store this and navigate to application form
+        //alert(`You're about to apply for:\n\n${scholarship.name}\n${scholarship.institution}\n\nYou will be redirected to the application form.`);
+        
+        // Redirect to application page
+        window.location.href = 'apply.html' ;
+      }
+    }
+
+    // Initial render
+    renderScholarships(scholarships);
+
+    // Add smooth scroll for apply buttons
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#apply') {
+        e.preventDefault();
+      }
+    });
+
+    // Add deadline countdown
+    function updateDeadlines() {
+      const today = new Date();
+      scholarships.forEach(s => {
+        const deadline = new Date(s.deadline);
+        const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+        s.daysLeft = daysLeft;
+      });
+    }
+
+    updateDeadlines();
+
+    // Add urgent badge for scholarships closing soon
+    setInterval(() => {
+      const cards = document.querySelectorAll('.scholarship-card');
+      cards.forEach((card, index) => {
+        const scholarship = filteredScholarships[index];
+        if (scholarship && scholarship.daysLeft <= 7 && scholarship.daysLeft > 0) {
+          const badge = card.querySelector('.badge-' + scholarship.level);
+          if (badge && !card.querySelector('.urgent-badge')) {
+            const urgentBadge = document.createElement('span');
+            urgentBadge.className = 'urgent-badge bg-red-600 text-white px-2 py-1 rounded text-xs font-bold ml-2';
+            urgentBadge.innerHTML = '<i class="fas fa-clock mr-1"></i>Closing Soon!';
+            badge.parentElement.appendChild(urgentBadge);
+          }
+        }
+      });
+    }, 1000);
+  </script>
+
 </body>
 </html>

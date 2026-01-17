@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frequently Asked Questions | Pata Scholarship</title>
+  <meta name="description" content="Get answers to common questions about Pata Scholarship, the application process, eligibility, and more."/>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Raleway', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #10b981;
+      --primary-dark: #059669;
+      --primary-light: #34d399;
+      --dark-text-color: #1e293b;
+      --gray-text-color: #64748b;
+    }
+
+    .faq-item {
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      transform: translateX(5px);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+    }
+
+    .faq-answer.active {
+      max-height: 1000px;
+      transition: max-height 0.5s ease-in;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-icon.active {
+      transform: rotate(180deg);
+    }
+
+    .category-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .search-highlight {
+      background-color: #fef08a;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="h-full bg-gray-50 font-body antialiased">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-24">
+        <a href="index.html" class="flex-shrink-0">
+          <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/773d76db-4b7e-4367-8326-ba10db661500/publicContain" 
+               alt="Pata Scholarship Logo" class="h-24 py-2">
+        </a>
+
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="scholarship.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">Scholarships</a>
+          <a href="about.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">About Us</a>
+          <a href="faq.html" class="text-[var(--primary-color)] font-medium border-b-2 border-[var(--primary-color)]">FAQ</a>
+          <a href="contact.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">Contact</a>
+          <a href="apply.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] font-semibold hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 shadow-md hover:shadow-lg">Apply Now</a>
+        </nav>
+
+        <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-700">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-4 space-y-3">
+        <a href="scholarship.html" class="block text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">Scholarships</a>
+        <a href="about.html" class="block text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">About Us</a>
+        <a href="faq.html" class="block text-[var(--primary-color)] font-medium">FAQ</a>
+        <a href="contact.html" class="block text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium">Contact</a>
+        <a href="apply.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] font-semibold hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 text-center shadow-md">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-heading">
+          Frequently Asked Questions
+        </h1>
+        <p class="text-xl sm:text-2xl text-green-100 max-w-3xl mx-auto mb-8">
+          Find answers to common questions about scholarships, applications, and our platform
+        </p>
+        
+        <!-- Search Bar -->
+        <div class="max-w-2xl mx-auto">
+          <div class="relative">
+            <input type="text" id="faqSearch" 
+                   class="w-full px-6 py-4 pr-12 rounded-xl text-gray-900 text-lg focus:ring-4 focus:ring-green-300 focus:outline-none"
+                   placeholder="Search for answers...">
+            <i class="fas fa-search absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filters -->
+  <section class="bg-white border-b border-gray-200 sticky top-24 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-wrap gap-3 justify-center">
+        <button class="category-btn active px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-category="all">
+          <i class="fas fa-th-large mr-2"></i>All Questions
+        </button>
+        <button class="category-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-category="general">
+          <i class="fas fa-info-circle mr-2"></i>General
+        </button>
+        <button class="category-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-category="eligibility">
+          <i class="fas fa-user-check mr-2"></i>Eligibility
+        </button>
+        <button class="category-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-category="application">
+          <i class="fas fa-file-alt mr-2"></i>Application Process
+        </button>
+        <button class="category-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-category="payment">
+          <i class="fas fa-money-bill-wave mr-2"></i>Payment
+        </button>
+        <button class="category-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-category="technical">
+          <i class="fas fa-cog mr-2"></i>Technical
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <main class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Quick Stats -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border-2 border-green-200 text-center">
+          <i class="fas fa-question-circle text-4xl text-green-600 mb-3"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-1">45+</div>
+          <p class="text-gray-600">Questions Answered</p>
+        </div>
+        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-2 border-blue-200 text-center">
+          <i class="fas fa-clock text-4xl text-blue-600 mb-3"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-1">&lt; 2 hrs</div>
+          <p class="text-gray-600">Average Response Time</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200 text-center">
+          <i class="fas fa-headset text-4xl text-purple-600 mb-3"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-1">24/7</div>
+          <p class="text-gray-600">Support Available</p>
+        </div>
+      </div>
+
+      <!-- FAQ Items Container -->
+      <div id="faqContainer" class="space-y-4">
+        <!-- FAQs will be populated by JavaScript -->
+      </div>
+
+      <!-- No Results Message -->
+      <div id="noResults" class="hidden text-center py-16">
+        <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+        <h3 class="text-2xl font-bold text-gray-700 mb-2">No questions found</h3>
+        <p class="text-gray-500 mb-6">Try adjusting your search or browse by category</p>
+        <button onclick="resetSearch()" class="px-6 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition-colors">
+          Clear Search
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Still Have Questions -->
+  <section class="py-20 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <i class="fas fa-comments text-6xl mb-6 opacity-80"></i>
+      <h2 class="text-4xl font-bold mb-6 font-heading">Still Have Questions?</h2>
+      <p class="text-xl text-green-100 mb-8">
+        Our support team is here to help you. Get in touch and we'll respond within 2 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="px-8 py-4 bg-white text-green-600 rounded-xl font-bold hover:bg-green-50 transition-colors">
+          <i class="fas fa-envelope mr-2"></i>Email Support
+        </a>
+        <a href="#" class="px-8 py-4 bg-green-700 text-white rounded-xl font-bold hover:bg-green-800 transition-colors border-2 border-white">
+          <i class="fas fa-phone mr-2"></i>Call Us
+        </a>
+        <a href="#" class="px-8 py-4 bg-green-700 text-white rounded-xl font-bold hover:bg-green-800 transition-colors border-2 border-white">
+          <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="global-footer" class="code-section bg-[var(--dark-background-color)] text-[var(--light-text-color)] pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Main Footer Content -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- Brand Column -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="index.html" class="inline-block mb-4">
+          <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/773d76db-4b7e-4367-8326-ba10db661500/publicContain" alt="Pata Scholarship Logo" class="h-28 py-2" data-logo="">
+        </a>
+        <p class="text-[var(--gray-text-color)] text-sm mb-6 leading-relaxed">
+          Empowering Kenyan students to achieve their educational dreams through
+          secure, accessible scholarship opportunities.
+        </p>
+        <!-- Social Media -->
+        <div class="flex gap-4">
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-facebook-f text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-twitter text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-instagram text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
+          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+            <i class="fab fa-linkedin-in text-white group-hover:text-white" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
+          Quick Links
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="index.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Home</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Search Scholarships</a>
+          </li>
+          <li>
+            <a href="about.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">About Us</a>
+          </li>
+          <li>
+            <a href="faq.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">FAQ</a>
+          </li>
+          <li>
+            <a href="contact.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Scholarships -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
+          Scholarships
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="scholarship.html class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Junior Secondary</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Senior Secondary</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">University</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">TVET &amp; Colleges</a>
+          </li>
+          <li>
+            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Scholarship Details</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Account & Legal -->
+      <div>
+        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
+          Account &amp; Legal
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="login.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Login</a>
+          </li>
+          <li>
+            <a href="register.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Register</a>
+          </li>
+          <li>
+            <a href="account.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">My Account</a>
+          </li>
+          <li>
+            <a href="privacy-policy.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="terms-of-service.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Terms of Service</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-[var(--gray-text-color)] border-opacity-20 pt-8">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-[var(--gray-text-color)] text-sm text-center sm:text-left">
+          © 2026 Pata Scholarship. All rights reserved. | Securing Kenya's
+          Educational Future
+        </p>
+        <div class="flex items-center gap-4 text-sm text-[var(--gray-text-color)]">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-shield-check text-[var(--primary-color)]" aria-hidden="true"></i>
+            <span>SSL Secured</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-lock text-[var(--primary-color)]" aria-hidden="true"></i>
+            <span>Data Protected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // FAQ Data
+    const faqs = [
+      // General Questions
+      {
+        category: 'general',
+        question: 'What is Pata Scholarship?',
+        answer: 'Pata Scholarship is Kenya\'s leading online platform that connects students with scholarship opportunities across JSS, Secondary, University, and TVET levels. We simplify the scholarship application process and help students access financial aid for their education.'
+      },
+      {
+        category: 'general',
+        question: 'How does Pata Scholarship work?',
+        answer: 'Our platform aggregates scholarship opportunities from various organizations. Students can browse available scholarships, check eligibility requirements, and submit applications directly through our secure platform. We handle document management and track application status for you.'
+      },
+      {
+        category: 'general',
+        question: 'Is Pata Scholarship free to use?',
+        answer: 'Browsing scholarships and creating an account is completely free. There is a small application processing fee of KES 1,000 per scholarship application to cover administrative costs and platform maintenance.'
+      },
+      {
+        category: 'general',
+        question: 'How many scholarships are available?',
+        answer: 'We currently feature over 50 active scholarship opportunities from various organizations, with new scholarships added regularly. These cover JSS, Secondary, University, and TVET education levels.'
+      },
+      {
+        category: 'general',
+        question: 'Which counties do you serve?',
+        answer: 'Pata Scholarship serves students from all 47 counties in Kenya. Our platform is accessible nationwide, and we work with scholarship providers across the entire country.'
+      },
+
+      // Eligibility Questions
+      {
+        category: 'eligibility',
+        question: 'Who can apply for scholarships?',
+        answer: 'Any Kenyan student currently enrolled or admitted to JSS, Secondary School, University, or TVET institution can apply. Specific eligibility criteria vary by scholarship - some are merit-based, others are need-based, and some target specific groups or fields of study.'
+      },
+      {
+        category: 'eligibility',
+        question: 'What are the minimum requirements?',
+        answer: 'General requirements include: being a Kenyan citizen, having valid academic records, proof of admission or enrollment, and financial need documentation. Specific scholarships may have additional requirements like minimum grade averages or county of residence.'
+      },
+      {
+        category: 'eligibility',
+        question: 'Can I apply for multiple scholarships?',
+        answer: 'Yes! You can apply for as many scholarships as you qualify for. However, each application requires a separate KES 1,000 processing fee and complete documentation.'
+      },
+      {
+        category: 'eligibility',
+        question: 'Do I need a certain grade to qualify?',
+        answer: 'It depends on the scholarship. Some scholarships are merit-based and require high academic performance (e.g., 350+ marks in KCPE, B+ in KCSE), while others focus on financial need regardless of grades. Check individual scholarship requirements.'
+      },
+      {
+        category: 'eligibility',
+        question: 'Can orphans and vulnerable children apply?',
+        answer: 'Absolutely! We have several scholarships specifically designed for orphans and vulnerable children (OVC). These often provide full support including tuition, accommodation, and learning materials.'
+      },
+      {
+        category: 'eligibility',
+        question: 'Are there scholarships for students with disabilities?',
+        answer: 'Yes, several of our partner organizations offer scholarships specifically for students with disabilities. These scholarships often provide additional support for special needs and accessibility requirements.'
+      },
+
+      // Application Process
+      {
+        category: 'application',
+        question: 'How do I apply for a scholarship?',
+        answer: 'Create an account, browse available scholarships, select one that matches your profile, complete the online application form, upload required documents, pay the KES 1,000 processing fee via M-PESA, and submit. You\'ll receive a confirmation email with your application ID.'
+      },
+      {
+        category: 'application',
+        question: 'What documents do I need?',
+        answer: 'Typically required documents include: Birth Certificate, National ID or Passport copy, latest academic results/report card, fee structure from your institution, and admission letter (if applicable). Some scholarships may require additional documents.'
+      },
+      {
+        category: 'application',
+        question: 'Can I save my application and continue later?',
+        answer: 'Yes! Our platform allows you to save your progress as a draft and return to complete it later. Your information will be securely stored until you\'re ready to submit.'
+      },
+      {
+        category: 'application',
+        question: 'How long does the application process take?',
+        answer: 'The online application typically takes 15-30 minutes to complete if you have all required documents ready. After submission, the review process takes 5-7 business days.'
+      },
+      {
+        category: 'application',
+        question: 'Can I edit my application after submission?',
+        answer: 'No, applications cannot be edited after submission. Please review all information carefully before submitting. If you notice an error, contact our support team immediately at support@patascholarship.co.ke.'
+      },
+      {
+        category: 'application',
+        question: 'What file formats are accepted for documents?',
+        answer: 'We accept PDF, JPG, and PNG file formats. Each document should be under 5MB in size. Ensure all documents are clear and legible before uploading.'
+      },
+      {
+        category: 'application',
+        question: 'How do I track my application status?',
+        answer: 'Log into your account and go to "My Applications" to see real-time status updates. You\'ll also receive email notifications when your application status changes.'
+      },
+      {
+        category: 'application',
+        question: 'What happens after I submit my application?',
+        answer: 'After submission, our team verifies your payment and documents. Your application is then forwarded to the scholarship provider for review. You\'ll receive updates via email and can track progress in your dashboard.'
+      },
+
+      // Payment Questions
+      {
+        category: 'payment',
+        question: 'Why is there an application fee?',
+        answer: 'The KES 1,000 application fee covers administrative costs including document verification, secure data storage, application processing, and platform maintenance. This fee ensures we can provide quality service to all applicants.'
+      },
+      {
+        category: 'payment',
+        question: 'How do I pay the application fee?',
+        answer: 'Payment is made via M-PESA. Go to Lipa Na M-PESA, select Buy Goods and Services, enter Till Number 4178866, enter amount KES 1,000, confirm with your PIN, then enter the M-PESA transaction code in the application form.'
+      },
+      {
+        category: 'payment',
+        question: 'What if my M-PESA payment fails?',
+        answer: 'If your payment fails, check your M-PESA balance and try again. If the problem persists, contact your mobile service provider. For assistance, email us at support@patascholarship.co.ke with your phone number and transaction details.'
+      },
+      {
+        category: 'payment',
+        question: 'Is the application fee refundable?',
+        answer: 'The application processing fee is non-refundable as it covers administrative costs incurred during application processing, regardless of the application outcome.'
+      },
+      {
+        category: 'payment',
+        question: 'Can I pay for someone else\'s application?',
+        answer: 'Yes, you can use any M-PESA number to pay the application fee. Just ensure you enter the correct transaction code in the application form.'
+      },
+      {
+        category: 'payment',
+        question: 'What is the M-PESA Till Number?',
+        answer: 'Our M-PESA Till Number is 4178866. Always verify you\'re sending to the correct number to avoid payment errors.'
+      },
+      {
+        category: 'payment',
+        question: 'How long does payment verification take?',
+        answer: 'Payment verification is usually instant. However, in some cases it may take up to 30 minutes. If your payment isn\'t verified after 1 hour, contact support with your transaction code.'
+      },
+
+      // Technical Questions
+      {
+        category: 'technical',
+        question: 'I forgot my password. How do I reset it?',
+        answer: 'Click "Forgot Password" on the login page, enter your registered email address, and you\'ll receive a password reset link. Follow the instructions in the email to create a new password.'
+      },
+      {
+        category: 'technical',
+        question: 'I\'m having trouble uploading documents. What should I do?',
+        answer: 'Ensure your files are in PDF, JPG, or PNG format and under 5MB each. Try a different browser if the problem persists. Clear your browser cache or contact support@patascholarship.co.ke for assistance.'
+      },
+      {
+        category: 'technical',
+        question: 'Can I use Pata Scholarship on my phone?',
+        answer: 'Yes! Our platform is fully mobile-responsive and works on smartphones and tablets. For the best experience, we recommend using the latest version of Chrome, Safari, or Firefox.'
+      },
+      {
+        category: 'technical',
+        question: 'Is my personal information secure?',
+        answer: 'Absolutely. We use SSL encryption to protect all data transmitted through our platform. Your personal information is stored securely and never shared with third parties without your consent, except with scholarship providers for application purposes.'
+      },
+      {
+        category: 'technical',
+        question: 'I didn\'t receive my confirmation email. What should I do?',
+        answer: 'Check your spam/junk folder first. If you still don\'t see it, verify the email address in your profile is correct. You can resend the confirmation email from your dashboard or contact support.'
+      },
+      {
+        category: 'technical',
+        question: 'Can I change my email address after registration?',
+        answer: 'Yes, you can update your email address in your profile settings. You\'ll need to verify the new email address before the change takes effect.'
+      },
+      {
+        category: 'technical',
+        question: 'What browsers are supported?',
+        answer: 'Pata Scholarship works best on the latest versions of Google Chrome, Mozilla Firefox, Safari, and Microsoft Edge. For optimal performance, please keep your browser updated.'
+      },
+      {
+        category: 'technical',
+        question: 'I\'m getting an error message. What does it mean?',
+        answer: 'Error messages usually indicate missing required fields, invalid file formats, or connectivity issues. Read the error message carefully and follow the instructions. If the problem persists, take a screenshot and email support@patascholarship.co.ke.'
+      },
+
+      // Additional General Questions
+      {
+        category: 'general',
+        question: 'How long does it take to hear back about my application?',
+        answer: 'After submission, our team reviews applications within 5-7 business days. Scholarship providers then take 2-4 weeks to make decisions. Total timeline is typically 3-5 weeks from submission to final decision.'
+      },
+      {
+        category: 'general',
+        question: 'What are my chances of getting a scholarship?',
+        answer: 'This varies by scholarship and applicant qualifications. Generally, merit-based scholarships are highly competitive, while need-based scholarships consider financial circumstances. We recommend applying to multiple scholarships to increase your chances.'
+      },
+      {
+        category: 'general',
+        question: 'Do you offer scholarships for postgraduate studies?',
+        answer: 'Yes! We have several scholarships for Master\'s and PhD programs, including international opportunities like DAAD, Commonwealth, Chevening, and Fulbright scholarships.'
+      },
+      {
+        category: 'general',
+        question: 'Can I get help with my application?',
+        answer: 'Yes! Our support team can answer questions and provide guidance. We also have video tutorials and step-by-step guides in your dashboard. For personalized assistance, email support@patascholarship.co.ke.'
+      },
+      {
+        category: 'eligibility',
+        question: 'Are there age limits for scholarships?',
+        answer: 'Age requirements vary by scholarship. Most JSS and secondary scholarships follow standard education age brackets. University and TVET scholarships generally have more flexible age requirements. Check specific scholarship details.'
+      },
+      {
+        category: 'application',
+        question: 'What if I don\'t have all the required documents?',
+        answer: 'You need all required documents to submit a complete application. If you\'re missing documents, save your application as a draft and complete it once you have everything. Contact your school or relevant authorities to obtain missing documents.'
+      },
+      {
+        category: 'payment',
+        question: 'Do scholarship winners have to pay back the money?',
+        answer: 'No! Scholarships are grants, not loans. You do not need to pay back scholarship money. However, some scholarships may have requirements like maintaining certain grades or community service.'
+      }
+    ];
+
+    let currentCategory = 'all';
+    let currentSearchTerm = '';
+
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // Render FAQs
+    function renderFAQs() {
+      const container = document.getElementById('faqContainer');
+      const noResults = document.getElementById('noResults');
+      
+      let filteredFAQs = faqs;
+      
+      // Filter by category
+      if (currentCategory !== 'all') {
+        filteredFAQs = filteredFAQs.filter(faq => faq.category === currentCategory);
+      }
+      
+      // Filter by search
+      if (currentSearchTerm) {
+        filteredFAQs = filteredFAQs.filter(faq => 
+          faq.question.toLowerCase().includes(currentSearchTerm) ||
+          faq.answer.toLowerCase().includes(currentSearchTerm)
+        );
+      }
+      
+      if (filteredFAQs.length === 0) {
+        container.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        return;
+      }
+      
+      container.classList.remove('hidden');
+      noResults.classList.add('hidden');
+      
+      container.innerHTML = filteredFAQs.map((faq, index) => `
+        <div class="faq-item bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+          <button onclick="toggleFAQ(${index})" 
+                  class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors">
+            <div class="flex items-start flex-1">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-question text-green-600"></i>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 pr-4">
+                ${highlightText(faq.question, currentSearchTerm)}
+              </h3>
+            </div>
+            <i class="faq-icon fas fa-chevron-down text-green-600 text-xl flex-shrink-0" id="icon-${index}"></i>
+          </button>
+          
+          <div class="faq-answer px-6 pb-0" id="answer-${index}">
+            <div class="pl-14 pr-4 pb-6 text-gray-700 leading-relaxed">
+              ${highlightText(faq.answer, currentSearchTerm)}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Toggle FAQ answer
+    function toggleFAQ(index) {
+      const answer = document.getElementById('answer-' + index);
+      const icon = document.getElementById('icon-' + index);
+      
+      // Close all other FAQs
+      document.querySelectorAll('.faq-answer').forEach((el, i) => {
+        if (i !== index) {
+          el.classList.remove('active');
+          document.getElementById('icon-' + i).classList.remove('active');
+        }
+      });
+      
+      // Toggle current FAQ
+      answer.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    // Highlight search text
+    function highlightText(text, searchTerm) {
+      if (!searchTerm) return text;
+      
+      const regex = new RegExp(`(${searchTerm})`, 'gi');
+      return text.replace(regex, '<span class="search-highlight">$1</span>');
+    }
+
+    // Category filter
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentCategory = this.getAttribute('data-category');
+        renderFAQs();
+      });
+    });
+
+    // Search functionality
+    document.getElementById('faqSearch').addEventListener('input', function(e) {
+      currentSearchTerm = e.target.value.toLowerCase();
+      renderFAQs();
+    });
+
+    // Reset search
+    function resetSearch() {
+      document.getElementById('faqSearch').value = '';
+      currentSearchTerm = '';
+      currentCategory = 'all';
+      document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.category-btn[data-category="all"]').classList.add('active');
+      renderFAQs();
+    }
+
+    // Initial render
+    renderFAQs();
+
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
+  </script>
+
+</body>
+</html>
