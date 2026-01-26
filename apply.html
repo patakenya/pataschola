@@ -860,8 +860,11 @@
           </p>
         </div>
       </div>
-      <button onclick="window.location.href='#'" class="w-full px-6 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-colors">
-        Go to Dashboard
+      <button
+        onclick="shareOnWhatsApp()"
+        class="w-full px-6 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-colors"
+      >
+        Share to WhatsApp Groups
       </button>
     </div>
   </div>
@@ -1089,6 +1092,13 @@
 
     // Initialize
     showStep(1);
+    function shareOnWhatsApp() {
+    const message = encodeURIComponent(
+      "`🎓 `I successfully applied for a scholarship! `🙌`\n\nYou can also apply here:\n`👉` https://patascholarship.co.ke/apply"
+    );
+
+    window.open(`https://wa.me/?text=${message}`, "_blank");
+  }
   </script>
 <script src="https://app.landingsite.ai/embed/main.umd.js"></script>
 </body>

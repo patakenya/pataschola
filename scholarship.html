@@ -14,7 +14,6 @@
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
 
   <script>
     tailwind.config = {
@@ -31,10 +30,17 @@
 
   <style>
     :root {
-      
+      --primary-color: #16a34a;
+      --primary-button-text-color: #ffffff;
+      --primary-button-hover-bg-color: #15803d;
+      --dark-background-color: #1e293b;
+      --light-background-color: #f8fafc;
       --dark-text-color: #1e293b;
       --gray-text-color: #64748b;
+      --light-text-color: #f1f5f9;
       --accent4-color: #10b981;
+      --button-rounded-radius: 0.5rem;
+      --font-family-heading: 'Raleway', sans-serif;
     }
 
     .scholarship-card {
@@ -57,6 +63,50 @@
     .badge-tvet { background-color: #fed7aa; color: #92400e; }
     .badge-full { background-color: #d1fae5; color: #065f46; }
     .badge-partial { background-color: #fef3c7; color: #92400e; }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 1rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body class="h-full bg-gray-50 font-body antialiased">
@@ -78,15 +128,15 @@
           <a href="apply.html" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] font-semibold hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-200 shadow-md hover:shadow-lg">Apply Now</a>
         </nav>
 
-      <button data-landingsite-mobile-menu-toggle="" class="lg:hidden p-2 rounded-md text-[var(--dark-text-color)] hover:bg-[var(--light-background-color)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
-        <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
-      </button>
+        <button id="mobileMenuToggle" class="lg:hidden p-2 rounded-md text-[var(--dark-text-color)] hover:bg-[var(--light-background-color)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
+          <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-     <nav data-landingsite-mobile-menu="" class="hidden lg:hidden pb-4">
-      <div class="flex flex-col space-y-3 ">
+    <nav id="mobileMenu" class="hidden lg:hidden pb-4">
+      <div class="flex flex-col space-y-3 px-4">
         <a href="scholarship.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium py-2 px-4 rounded hover:bg-[var(--light-background-color)] transition-colors duration-200">Scholarships</a>
         <a href="about.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium py-2 px-4 rounded hover:bg-[var(--light-background-color)] transition-colors duration-200">About Us</a>
         <a href="faq.html" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium py-2 px-4 rounded hover:bg-[var(--light-background-color)] transition-colors duration-200">FAQ</a>
@@ -103,7 +153,7 @@
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 font-heading">
           Available Scholarships
         </h1>
-        <p class="text-xl sm:text-2xl text-indigo-100 max-w-3xl mx-auto mb-8">
+        <p class="text-xl sm:text-2xl text-green-100 max-w-3xl mx-auto mb-8">
           Explore over 50 scholarship opportunities for Kenyan students
         </p>
         
@@ -111,7 +161,7 @@
         <div class="max-w-2xl mx-auto">
           <div class="relative">
             <input type="text" id="searchInput" 
-                   class="w-full px-6 py-4 pr-12 rounded-xl text-gray-900 text-lg focus:ring-4 focus:ring-indigo-300 focus:outline-none"
+                   class="w-full px-6 py-4 pr-12 rounded-xl text-gray-900 text-lg focus:ring-4 focus:ring-green-300 focus:outline-none"
                    placeholder="Search scholarships by name, institution, or level...">
             <i class="fas fa-search absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl"></i>
           </div>
@@ -124,20 +174,20 @@
   <section class="bg-white border-b border-gray-200 sticky top-24 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <div class="flex flex-wrap gap-3 items-center justify-center">
-        <button class="filter-btn active px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="all">
-          All Scholarships (50)
+        <button class="filter-btn active px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-filter="all">
+          All Scholarships (<span id="allCount">50</span>)
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="jss">
-          JSS (12)
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-filter="jss">
+          JSS (<span id="jssCount">12</span>)
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="secondary">
-          Secondary (15)
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-filter="secondary">
+          Secondary (<span id="secondaryCount">15</span>)
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="university">
-          University (18)
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-filter="university">
+          University (<span id="universityCount">18</span>)
         </button>
-        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-indigo-500 transition-colors" data-filter="tvet">
-          TVET (5)
+        <button class="filter-btn px-6 py-2 rounded-full font-medium border-2 border-gray-300 hover:border-green-500 transition-colors" data-filter="tvet">
+          TVET (<span id="tvetCount">5</span>)
         </button>
       </div>
     </div>
@@ -151,7 +201,7 @@
         <p class="text-gray-600">
           <span id="resultCount">50</span> scholarships available
         </p>
-        <select id="sortSelect" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+        <select id="sortSelect" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
           <option value="recent">Most Recent</option>
           <option value="deadline">Deadline (Soonest)</option>
           <option value="amount">Amount (Highest)</option>
@@ -172,133 +222,135 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer id="global-footer" class="code-section bg-[var(--dark-background-color)] text-[var(--light-text-color)] pt-16 pb-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Main Footer Content -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-      <!-- Brand Column -->
-      <div class="sm:col-span-2 lg:col-span-1">
-        <a href="index.html" class="inline-block mb-4">
-          <img src="pty3.png" alt="Pata Scholarship Logo" class="h-28 py-2" data-logo="">
-        </a>
-        <p class="text-[var(--gray-text-color)] text-sm mb-6 leading-relaxed">
-          Empowering Kenyan students to achieve their educational dreams through
-          secure, accessible scholarship opportunities.
-        </p>
-        <!-- Social Media -->
-        <div class="flex gap-4">
-          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
-            <i class="fab fa-facebook-f text-white group-hover:text-white" aria-hidden="true"></i>
-          </a>
-          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
-            <i class="fab fa-twitter text-white group-hover:text-white" aria-hidden="true"></i>
-          </a>
-          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
-            <i class="fab fa-instagram text-white group-hover:text-white" aria-hidden="true"></i>
-          </a>
-          <a href="index.html" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
-            <i class="fab fa-linkedin-in text-white group-hover:text-white" aria-hidden="true"></i>
-          </a>
+  <!-- Application Modal -->
+  <div id="applicationModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="p-6">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2 font-heading">Scholarship Application</h2>
+            <p class="text-sm text-gray-600">Review scholarship details before applying</p>
+          </div>
+          <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
+            <i class="fas fa-times text-2xl"></i>
+          </button>
         </div>
-      </div>
 
-      <!-- Quick Links -->
-      <div>
-        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
-          Quick Links
-        </h4>
-        <ul class="space-y-3">
-          <li>
-            <a href="index.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Home</a>
-          </li>
-          <li>
-            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Search Scholarships</a>
-          </li>
-          <li>
-            <a href="about.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">About Us</a>
-          </li>
-          <li>
-            <a href="faq.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">FAQ</a>
-          </li>
-          <li>
-            <a href="contact.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Contact Us</a>
-          </li>
-        </ul>
-      </div>
+        <!-- Scholarship Details -->
+        <div id="modalContent" class="mb-6">
+          <!-- Content will be populated by JavaScript -->
+        </div>
 
-      <!-- Scholarships -->
-      <div>
-        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
-          Scholarships
-        </h4>
-        <ul class="space-y-3">
-          <li>
-            <a href="scholarship.html class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Junior Secondary</a>
-          </li>
-          <li>
-            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Senior Secondary</a>
-          </li>
-          <li>
-            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">University</a>
-          </li>
-          <li>
-            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">TVET &amp; Colleges</a>
-          </li>
-          <li>
-            <a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Scholarship Details</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Account & Legal -->
-      <div>
-        <h4 class="text-white font-bold text-lg mb-4 font-[var(--font-family-heading)]">
-          Account &amp; Legal
-        </h4>
-        <ul class="space-y-3">
-          <li>
-            <a href="login.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Login</a>
-          </li>
-          <li>
-            <a href="register.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Register</a>
-          </li>
-          <li>
-            <a href="account.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">My Account</a>
-          </li>
-          <li>
-            <a href="privacy-policy.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="terms-of-service.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Terms of Service</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Divider -->
-    <div class="border-t border-[var(--gray-text-color)] border-opacity-20 pt-8">
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-[var(--gray-text-color)] text-sm text-center sm:text-left">
-          © 2026 Pata Scholarship. All rights reserved. | Securing Kenya's
-          Educational Future
-        </p>
-        <div class="flex items-center gap-4 text-sm text-[var(--gray-text-color)]">
-          <div class="flex items-center gap-2">
-            <i class="fas fa-shield-check text-[var(--primary-color)]" aria-hidden="true"></i>
-            <span>SSL Secured</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fas fa-lock text-[var(--primary-color)]" aria-hidden="true"></i>
-            <span>Data Protected</span>
-          </div>
+        <!-- Action Buttons -->
+        <div class="flex gap-3">
+          <button onclick="closeModal()" class="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+            Cancel
+          </button>
+          <button onclick="proceedToApplication()" class="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
+            Proceed to Application
+          </button>
         </div>
       </div>
     </div>
   </div>
-</footer>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--dark-background-color)] text-[var(--light-text-color)] pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Main Footer Content -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Brand Column -->
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="index.html" class="inline-block mb-4">
+            <img src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/773d76db-4b7e-4367-8326-ba10db661500/publicContain" alt="Pata Scholarship Logo" class="h-28 py-2">
+          </a>
+          <p class="text-[var(--gray-text-color)] text-sm mb-6 leading-relaxed">
+            Empowering Kenyan students to achieve their educational dreams through
+            secure, accessible scholarship opportunities.
+          </p>
+          <!-- Social Media -->
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+              <i class="fab fa-facebook-f text-white group-hover:text-white" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+              <i class="fab fa-twitter text-white group-hover:text-white" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+              <i class="fab fa-instagram text-white group-hover:text-white" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-[var(--primary-color)] bg-opacity-20 rounded-lg flex items-center justify-center hover:bg-[var(--primary-color)] transition-colors duration-200 group">
+              <i class="fab fa-linkedin-in text-white group-hover:text-white" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4 font-heading">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Home</a></li>
+            <li><a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Search Scholarships</a></li>
+            <li><a href="about.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">About Us</a></li>
+            <li><a href="faq.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">FAQ</a></li>
+            <li><a href="contact.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Scholarships -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4 font-heading">Scholarships</h4>
+          <ul class="space-y-3">
+            <li><a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Junior Secondary</a></li>
+            <li><a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Senior Secondary</a></li>
+            <li><a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">University</a></li>
+            <li><a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">TVET &amp; Colleges</a></li>
+            <li><a href="scholarship.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Scholarship Details</a></li>
+          </ul>
+        </div>
+
+        <!-- Account & Legal -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4 font-heading">Account &amp; Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="login.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Login</a></li>
+            <li><a href="register.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Register</a></li>
+            <li><a href="account.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">My Account</a></li>
+            <li><a href="privacy-policy.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html" class="text-[var(--gray-text-color)] hover:text-[var(--primary-color)] transition-colors duration-200 text-sm">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-[var(--gray-text-color)] border-opacity-20 pt-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-[var(--gray-text-color)] text-sm text-center sm:text-left">
+            © 2026 Pata Scholarship. All rights reserved. | Securing Kenya's Educational Future
+          </p>
+          <div class="flex items-center gap-4 text-sm text-[var(--gray-text-color)]">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-shield-check text-[var(--primary-color)]" aria-hidden="true"></i>
+              <span>SSL Secured</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-lock text-[var(--primary-color)]" aria-hidden="true"></i>
+              <span>Data Protected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
+    // Mobile menu toggle
+    document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    });
+
     // Scholarship data
     const scholarships = [
       // JSS Scholarships (12)
@@ -361,8 +413,22 @@
     ];
 
     let filteredScholarships = [...scholarships];
+    let currentSearchResults = [...scholarships];
+    let selectedScholarship = null;
 
-    
+    // Update counts
+    function updateCounts() {
+      const jssCount = scholarships.filter(s => s.level === 'jss').length;
+      const secondaryCount = scholarships.filter(s => s.level === 'secondary').length;
+      const universityCount = scholarships.filter(s => s.level === 'university').length;
+      const tvetCount = scholarships.filter(s => s.level === 'tvet').length;
+      
+      document.getElementById('allCount').textContent = scholarships.length;
+      document.getElementById('jssCount').textContent = jssCount;
+      document.getElementById('secondaryCount').textContent = secondaryCount;
+      document.getElementById('universityCount').textContent = universityCount;
+      document.getElementById('tvetCount').textContent = tvetCount;
+    }
 
     // Render scholarships
     function renderScholarships(scholarshipsToRender) {
@@ -417,10 +483,10 @@
               </div>
             </div>
             
-            <a href="#apply" onclick="applyScholarship(${s.id})" 
+            <button onclick="applyScholarship(${s.id})" 
                class="block w-full text-center px-6 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition-colors">
               Apply Now
-            </a>
+            </button>
           </div>
         </div>
       `).join('');
@@ -442,6 +508,7 @@
           filteredScholarships = scholarships.filter(s => s.level === filter);
         }
         
+        currentSearchResults = filteredScholarships;
         renderScholarships(filteredScholarships);
       });
     });
@@ -457,13 +524,14 @@
         s.level.toLowerCase().includes(searchTerm)
       );
       
+      currentSearchResults = searchResults;
       renderScholarships(searchResults);
     });
 
     // Sort functionality
     document.getElementById('sortSelect').addEventListener('change', function(e) {
       const sortBy = e.target.value;
-      let sorted = [...filteredScholarships];
+      let sorted = [...currentSearchResults];
       
       switch(sortBy) {
         case 'deadline':
@@ -476,7 +544,7 @@
           sorted.sort((a, b) => a.name.localeCompare(b.name));
           break;
         default:
-          sorted = [...filteredScholarships];
+          sorted = [...currentSearchResults];
       }
       
       renderScholarships(sorted);
@@ -486,35 +554,113 @@
     function applyScholarship(id) {
       const scholarship = scholarships.find(s => s.id === id);
       if (scholarship) {
-        // Store selected scholarship in session
-        const scholarshipData = {
-          id: scholarship.id,
-          name: scholarship.name,
-          institution: scholarship.institution,
-          level: scholarship.level,
-          type: scholarship.type,
-          amount: scholarship.amount
-        };
+        selectedScholarship = scholarship;
         
-        // In a real application, you would store this and navigate to application form
-        //alert(`You're about to apply for:\n\n${scholarship.name}\n${scholarship.institution}\n\nYou will be redirected to the application form.`);
+        // Populate modal content
+        const modalContent = document.getElementById('modalContent');
+        modalContent.innerHTML = `
+          <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-6 mb-4">
+            <div class="flex justify-between items-start mb-4">
+              <span class="badge-${scholarship.level} px-3 py-1 rounded-full text-xs font-semibold uppercase">
+                ${scholarship.level}
+              </span>
+              <span class="badge-${scholarship.type} px-3 py-1 rounded-full text-xs font-semibold uppercase">
+                ${scholarship.type === 'full' ? 'Full Scholarship' : 'Partial'}
+              </span>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-gray-900 mb-2 font-heading">
+              ${scholarship.name}
+            </h3>
+            
+            <p class="text-gray-700 mb-4">
+              <i class="fas fa-university mr-2 text-green-600"></i>${scholarship.institution}
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">Description</h4>
+              <p class="text-gray-700">${scholarship.description}</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-sm text-gray-600 mb-1">Award Amount</p>
+                <p class="text-xl font-bold text-green-600">
+                  ${scholarship.amount === 0 ? 'Free Education' : 'KES ' + scholarship.amount.toLocaleString()}
+                </p>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-sm text-gray-600 mb-1">Application Deadline</p>
+                <p class="text-xl font-bold text-gray-900">${new Date(scholarship.deadline).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+              </div>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+              <div class="flex items-start">
+                <i class="fas fa-info-circle text-blue-600 mt-1 mr-3"></i>
+                <p class="text-sm text-blue-900">
+                  By proceeding, you'll be taken to the application form where you can submit your details and required documents for this scholarship.
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
         
-        // Redirect to application page
-        window.location.href = 'apply.html' ;
+        // Show modal
+        const modal = document.getElementById('applicationModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
     }
 
-    // Initial render
-    renderScholarships(scholarships);
+    function closeModal() {
+      const modal = document.getElementById('applicationModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      selectedScholarship = null;
+    }
 
-    // Add smooth scroll for apply buttons
-    document.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#apply') {
-        e.preventDefault();
+    function proceedToApplication() {
+      if (selectedScholarship) {
+        // Store selected scholarship data
+        const scholarshipData = {
+          id: selectedScholarship.id,
+          name: selectedScholarship.name,
+          institution: selectedScholarship.institution,
+          level: selectedScholarship.level,
+          type: selectedScholarship.type,
+          amount: selectedScholarship.amount
+        };
+        
+        // In a real application, store this in sessionStorage
+        // sessionStorage.setItem('selectedScholarship', JSON.stringify(scholarshipData));
+        
+        // Redirect to application page
+        window.location.href = 'apply.html';
+      }
+    }
+
+    // Close modal on overlay click
+    document.getElementById('applicationModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
       }
     });
 
-    // Add deadline countdown
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Initial render
+    updateCounts();
+    renderScholarships(scholarships);
+
+    // Update deadline countdown
     function updateDeadlines() {
       const today = new Date();
       scholarships.forEach(s => {
@@ -529,8 +675,10 @@
     // Add urgent badge for scholarships closing soon
     setInterval(() => {
       const cards = document.querySelectorAll('.scholarship-card');
+      const displayedScholarships = currentSearchResults;
+      
       cards.forEach((card, index) => {
-        const scholarship = filteredScholarships[index];
+        const scholarship = displayedScholarships[index];
         if (scholarship && scholarship.daysLeft <= 7 && scholarship.daysLeft > 0) {
           const badge = card.querySelector('.badge-' + scholarship.level);
           if (badge && !card.querySelector('.urgent-badge')) {
@@ -543,6 +691,5 @@
       });
     }, 1000);
   </script>
-<script src="https://app.landingsite.ai/embed/main.umd.js"></script>
 </body>
 </html>
